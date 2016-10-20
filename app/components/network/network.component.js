@@ -6,24 +6,24 @@ import NetworkChart from './network.chart';
 function controller () {
   const $ctrl = this;
 
-  console.log(this);
-
   const chart = new NetworkChart();
 
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
       enableOpen: true,
-      onChange: draw
+      onChange: $onInit
     },
     filter: {},
-    $onInit: () => {
-      $ctrl.data = processData($ctrl.dataPackage.resources[0].data);
-      $ctrl.names = $ctrl.data.nodes.map(d => d.name);
-      draw();
-    },
+    $onInit,
     applyFilter
   });
+
+  function $onInit () {
+    $ctrl.data = processData($ctrl.dataPackage.resources[0].data);
+    $ctrl.names = $ctrl.data.nodes.map(d => d.name);
+    draw();
+  }
 
   function applyFilter (filter) {
     let fn = d => {

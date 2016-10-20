@@ -1,14 +1,13 @@
 {
-  "name": "A Vennerable Challenge",
-  "title": "A Vennerable Challenge",
-  "description": "A Vennerable Challenge",
+  "name": "Force-Directed Graph",
+  "title": "Force-Directed Graph",
+  "description": "Force-Directed Graph",
   "resources": [
     "./miserables.json"
   ],
-  "image": "venn.png",
   "readme": "README.md",
   "sources": [{
-    "name": "American Scientist",
-    "web": "http://www.americanscientist.org/issues/num2/a-vennerable-challenge/1"
+    "name": "The Stanford GraphBase: A Platform for Combinatorial Computing",
+    "web": "http://www-cs-faculty.stanford.edu/~uno/sgb.html"
   }]
 }

@@ -2,6 +2,7 @@ import d3 from 'd3';
 import d3Tip from 'd3-tip';
 import 'd3-tip/examples/example-styles.css!';
 
+// Based on Force-Directed Graph by [M. Bostock](https://bl.ocks.org/mbostock/4062045).
 export default function Network (opts) {
   opts = opts || {};
 
