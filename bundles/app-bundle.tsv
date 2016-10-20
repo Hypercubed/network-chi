@@ -20,7 +20,7 @@ common/services/growl/growl.js	733
 common/directives/resize.js	892
 common/directives/active-path.js	1025
 common/common.js	1061
-common/partials/footer.html	615
+common/partials/footer.html	621
 common/partials/header.html	1149
 components/app.component.js	863
 components/app.js	1366
