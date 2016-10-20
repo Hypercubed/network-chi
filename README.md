@@ -22,8 +22,8 @@ npm install # jspm install is run post-install by npm
 ### Install this Project
 
 ```sh
-git clone https://github.com/Hypercubed/venn-chi.git dataset/network/
-gulp dev --dataset=./dataset/network/  # navigate to http://localhost:9000
+git clone https://github.com/Hypercubed/network-chi.git dataset/network/
+gulp dev --dataset=./dataset/network/ --bundle --open
 ```
 
 ## License
