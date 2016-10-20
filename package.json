@@ -1,12 +1,15 @@
 {
-  "name": "network-chi",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Project χ Network Visualization",
+  "name": "project-chi-electron-app",
+  "version": "0.0.0",
+  "description": "",
+  "main": "electron.js",
   "scripts": {
-    "test": "xo"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "J Harshbarger",
+  "devDependencies": {
+    "xo": "^0.16.0"
+  },
+  "author": "",
   "license": "MIT",
   "xo": {
     "esnext": true,
@@ -15,8 +18,8 @@
       "node",
       "browser"
     ],
-    "ignores": [],
     "rules": {
+      "no-console": "error",
       "import/no-extraneous-dependencies": 0,
       "space-before-function-paren": [
         2,
@@ -25,26 +28,7 @@
           "named": "always"
         }
       ],
-      "no-warning-comments": 0,
-      "no-mixed-operators": 0
+      "no-warning-comments": 0
     }
-  },
-  "devDependencies": {
-    "xo": "^0.16.0"
-  },
-  "dependencies": {
-    "xo": "^0.16.0"
-  },
-  "keywords": [
-    "network"
-  ],
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hypercubed/network-chi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Hypercubed/network-chi/issues"
-  },
-  "homepage": "https://github.com/Hypercubed/network-chi#readme"
+  }
 }
