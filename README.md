@@ -1,4 +1,4 @@
-# Project χ Venn Visualization
+# Project χ network Visualization
 
 ## About Project χ
 
@@ -15,15 +15,15 @@ This project relies on the [Project χ platform](https://github.com/Hypercubed/P
 ```sh
 git clone https://github.com/Hypercubed/Project-Chi.git
 cd Project-Chi
-git checkout tags/v1.0.0-beta-8  # ensure you are using the same version of Project χ
+git checkout tags/v1.0.0-rc.12  # ensure you are using the same version of Project χ
 npm install # jspm install is run post-install by npm
 ```
 
 ### Install this Project
 
 ```sh
-git clone https://github.com/Hypercubed/venn-chi.git dataset/venn/
-gulp dev --dataset=./dataset/venn/  # navigate to http://localhost:9000
+git clone https://github.com/Hypercubed/venn-chi.git dataset/network/
+gulp dev --dataset=./dataset/network/  # navigate to http://localhost:9000
 ```
 
 ## License

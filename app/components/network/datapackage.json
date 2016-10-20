@@ -3,7 +3,7 @@
   "title": "A Vennerable Challenge",
   "description": "A Vennerable Challenge",
   "resources": [
-    "data.tsv"
+    "./miserables.json"
   ],
   "image": "venn.png",
   "readme": "README.md",

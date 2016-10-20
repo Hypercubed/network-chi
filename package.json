@@ -1,10 +1,10 @@
 {
-  "name": "chi-venn",
+  "name": "network-chi",
   "private": true,
-  "version": "1.1.0",
-  "description": "Project χ Venn Visualization",
+  "version": "1.0.0",
+  "description": "Project χ Network Visualization",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo"
   },
   "author": "J Harshbarger",
   "license": "MIT",
@@ -35,15 +35,16 @@
   "dependencies": {
     "xo": "^0.16.0"
   },
+  "keywords": [
+    "network"
+  ],
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hypercubed/venn-chi.git"
+    "url": "git+https://github.com/Hypercubed/network-chi.git"
   },
-  "keywords": [
-    "venn"
-  ],
   "bugs": {
-    "url": "https://github.com/Hypercubed/venn-chi/issues"
+    "url": "https://github.com/Hypercubed/network-chi/issues"
   },
-  "homepage": "https://github.com/Hypercubed/venn-chi#readme"
+  "homepage": "https://github.com/Hypercubed/network-chi#readme"
 }

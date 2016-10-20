@@ -1,0 +1,25 @@
+<div datapackage-edit="$ctrl.editorOptions"></div>
+
+<section marked ng-include="$ctrl.dataPackage.readme">
+
+</section>
+
+<section id="charts" class="container">
+
+  <!-- input class="form-control" ng-model="$ctrl.filter.name" ng-change="$ctrl.applyFilter($ctrl.filter)" / -->
+  <ui-select ng-model="$ctrl.filter.name"
+    ng-change="$ctrl.applyFilter($ctrl.filter)"
+    multiple tagging tagging-label="(partial match)"
+    theme="bootstrap"
+    title="Choose an name">
+    <ui-select-match placeholder="Enter an name...">{{$item}}</ui-select-match>
+    <ui-select-choices repeat="name in $ctrl.names | filter:$select.search"
+      refresh-delay="0">
+      <div ng-bind-html="name | highlight: $select.search"></div>
+    </ui-select-choices>
+  </ui-select>
+
+  <div id="_network__chart" class="network_chart">
+  </div>
+
+</section>

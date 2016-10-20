@@ -1,7 +1,10 @@
 import angular from 'angular';
 
 import aboutHTML from './about/about.md!md';
-import vennComponent from './venn/venn';
+import networkComponent from './network/network.component';
+
+import 'ui-select/dist/select';
+import 'ui-select/dist/select.css!';
 
 configRoutes.$inject = ['$routeProvider'];
 function configRoutes ($routeProvider) {
@@ -10,8 +13,8 @@ function configRoutes ($routeProvider) {
       template: aboutHTML
     })
     .when('/', {
-      template: '<venn data-package="$resolve.dataPackage"></venn>',
-      datapackageUrl: 'components/venn/datapackage.json'
+      template: '<network data-package="$resolve.dataPackage"></network>',
+      datapackageUrl: 'components/network/datapackage.json'
     })
     .otherwise({
       redirectTo: '/'
@@ -19,6 +22,6 @@ function configRoutes ($routeProvider) {
 }
 
 export default angular
-  .module('routes', ['projectX.dataService'])
-  .component('venn', vennComponent)
+  .module('routes', ['projectX.dataService', 'ui.select'])
+  .component('network', networkComponent)
   .config(configRoutes);
