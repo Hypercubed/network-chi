@@ -8,27 +8,7 @@
   },
   "author": "J Harshbarger",
   "license": "MIT",
-  "xo": {
-    "esnext": true,
-    "space": 2,
-    "envs": [
-      "node",
-      "browser"
-    ],
-    "ignores": [],
-    "rules": {
-      "import/no-extraneous-dependencies": 0,
-      "space-before-function-paren": [
-        2,
-        {
-          "anonymous": "always",
-          "named": "always"
-        }
-      ],
-      "no-warning-comments": 0,
-      "no-mixed-operators": 0
-    }
-  },
+  "xo": false,
   "devDependencies": {
     "xo": "^0.16.0"
   },

@@ -1,28 +1,51 @@
 import d3 from 'd3';
 
 import './network.less!';
-import NetworkChart from './network.chart';
+import 'd3-tip/examples/example-styles.css!';
+
+import threeChart from './network.three-chart';
+import d3Chart from './network.d3-chart';
+import d3v4Chart from './network.d3v4-chart';
+import {v3force, v4force} from './network.d3-force';
+
+const chartConstructors = {
+  'd3 v3': d3Chart,
+  'd3 v4': d3v4Chart,
+  'three.js': threeChart
+};
+
+const layoutConstructors = {
+  'd3-force v3': v3force,
+  'd3-force v4': v4force
+};
 
 function controller () {
   const $ctrl = this;
 
-  const chart = new NetworkChart();
+  let chart;
 
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
       enableOpen: true,
+      enableSvgDownload: false,
+      enablePngDownload: false,
       onChange: $onInit
     },
+    charts: Object.keys(chartConstructors),
+    layouts: Object.keys(layoutConstructors),
+    selectedChart: 'd3 v3',
+    selectedLayout: 'd3-force v4',
     filter: {},
     $onInit,
-    applyFilter
+    applyFilter,
+    makeChart
   });
 
   function $onInit () {
     $ctrl.data = processData($ctrl.dataPackage.resources[0].data);
     $ctrl.names = $ctrl.data.nodes.map(d => d.name);
-    draw();
+    makeChart();
   }
 
   function applyFilter (filter) {
@@ -39,7 +62,7 @@ function controller () {
     }
 
     $ctrl.data.nodes.forEach(fn);
-    draw();
+    makeChart();
   }
 
   function processData (data) {
@@ -74,6 +97,14 @@ function controller () {
       nodes,
       links
     };
+  }
+
+  function makeChart () {
+    chart = chartConstructors[$ctrl.selectedChart]({
+      layout: layoutConstructors[$ctrl.selectedLayout]({})
+    });
+    $ctrl.editorOptions.enableSvgDownload = $ctrl.selectedChart !== 'three.js';
+    draw();
   }
 
   function draw () {

@@ -1,22 +1,19 @@
 import d3 from 'd3';
 import d3Tip from 'd3-tip';
-import 'd3-tip/examples/example-styles.css!';
+
+import {v3force} from './network.d3-force';
 
 // Based on Force-Directed Graph by [M. Bostock](https://bl.ocks.org/mbostock/4062045).
 export default function Network (opts) {
   opts = opts || {};
 
-  const margin = opts.margin || {top: 20, right: 20, bottom: 30, left: 40};
-  const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const margin = opts.margin || {top: 0, right: 0, bottom: 0, left: 0};
+  const width = opts.width || (960 - margin.left - margin.right);
+  const height = opts.height || (600 - margin.top - margin.bottom);
   const title = opts.title || 'Network';
+  const layout = opts.layout || v3force({});
 
   const color = d3.scale.category20();
-
-  const force = d3.layout.force()
-    .charge(-120)
-    .linkDistance(30)
-    .size([width, height]);
 
   const tip = d3Tip()
     .attr('class', 'd3-tip animate')
@@ -37,31 +34,41 @@ export default function Network (opts) {
 
       svg.call(tip);
 
-      force
-        .nodes(graph.nodes.filter(d => d.visible))
-        .links(graph.links.filter(d => d.target.visible && d.source.visible))
+      const nodeData = graph.nodes.filter(d => d.visible);
+      const linkData = graph.links.filter(d => d.target.visible && d.source.visible);
+
+      layout
+        .size([width, height]);
+
+      layout
+        .nodes(nodeData);
+
+      layout
+        .links(linkData);
+
+      layout
         .start();
 
       const link = svg.selectAll('.link')
-          .data(force.links())
+          .data(linkData)
         .enter().append('line')
           .attr('class', 'link')
           .style('stroke-width', d => Math.sqrt(d.value));
 
       const node = svg.selectAll('.node')
-          .data(force.nodes())
+          .data(nodeData)
         .enter().append('circle')
           .attr('class', 'node')
           .attr('r', 5)
           .style('fill', d => color(d.group))
           .on('mouseover', tip.show)
           .on('mouseout', tip.hide)
-          .call(force.drag);
+          .call(layout.drag);
 
       node.append('title')
         .text(d => d.name);
 
-      force.on('tick', () => {
+      layout.on('tick', () => {
         link.attr('x1', d => d.source.x)
             .attr('y1', d => d.source.y)
             .attr('x2', d => d.target.x)
